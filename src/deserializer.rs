@@ -394,7 +394,7 @@ impl<'js> ObjectAccess<'js> {
     }
 }
 
-fn str_deserializer(s: &str) -> de::value::StrDeserializer<JsError> {
+fn str_deserializer(s: &str) -> de::value::StrDeserializer<'_, JsError> {
     de::IntoDeserializer::into_deserializer(s)
 }
 
