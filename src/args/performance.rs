@@ -151,8 +151,8 @@ pub enum JsHitResultPriority {
     BestCase,
     /// Prioritize bad hitresults over good ones
     WorstCase,
-    /// Prioritize fast hitresults generation
-    Fastest,
+    // / Prioritize fast hitresults generation
+    // Fastest,
 }
 
 impl From<JsHitResultPriority> for HitResultPriority {
@@ -160,7 +160,7 @@ impl From<JsHitResultPriority> for HitResultPriority {
         match priority {
             JsHitResultPriority::BestCase => Self::BestCase,
             JsHitResultPriority::WorstCase => Self::WorstCase,
-            JsHitResultPriority::Fastest => Self::Fastest,
+            // JsHitResultPriority::Fastest => Self::Fastest,
         }
     }
 }
@@ -170,7 +170,7 @@ impl JsHitResultPriority {
         let priority = match <u8 as de::Deserialize>::deserialize(d) {
             Ok(0) => HitResultPriority::BestCase,
             Ok(1) => HitResultPriority::WorstCase,
-            Ok(2) => HitResultPriority::Fastest,
+            // Ok(2) => HitResultPriority::Fastest,
             _ => return Err(de::Error::custom("invalid HitResultPriority")),
         };
 

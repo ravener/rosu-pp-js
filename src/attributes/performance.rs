@@ -133,6 +133,10 @@ impl From<PerformanceAttributes> for JsPerformanceAttributes {
                 pp_speed,
                 effective_miss_count,
                 speed_deviation,
+                combo_based_estimated_miss_count: _,
+                score_based_estimated_miss_count: _,
+                aim_estimated_slider_breaks: _,
+                speed_estimated_slider_breaks: _,
             }) => Self {
                 difficulty: difficulty.into(),
                 pp,
@@ -149,14 +153,14 @@ impl From<PerformanceAttributes> for JsPerformanceAttributes {
                 pp,
                 pp_acc,
                 pp_difficulty,
-                effective_miss_count,
+                // effective_miss_count,
                 estimated_unstable_rate,
             }) => Self {
                 difficulty: difficulty.into(),
                 pp,
                 pp_acc: Some(pp_acc),
                 pp_difficulty: Some(pp_difficulty),
-                effective_miss_count: Some(effective_miss_count),
+                // effective_miss_count: Some(effective_miss_count),
                 estimated_unstable_rate,
                 ..Self::default()
             },

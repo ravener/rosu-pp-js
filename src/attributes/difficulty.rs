@@ -193,6 +193,7 @@ impl From<OsuDifficultyAttributes> for JsDifficultyAttributes {
             n_spinners,
             stars,
             max_combo,
+            ..
         } = attrs;
 
         Self {
@@ -235,6 +236,7 @@ impl From<TaikoDifficultyAttributes> for JsDifficultyAttributes {
             stars,
             max_combo,
             is_convert,
+            ..
         } = attrs;
 
         Self {
@@ -260,12 +262,16 @@ impl From<CatchDifficultyAttributes> for JsDifficultyAttributes {
 
         let CatchDifficultyAttributes {
             stars,
-            ar,
+            // ar,
+            preempt,
             n_fruits,
             n_droplets,
             n_tiny_droplets,
             is_convert,
+            ..
         } = attrs;
+
+        let ar = preempt;
 
         Self {
             mode: JsGameMode::Catch,
@@ -411,6 +417,7 @@ impl TryFrom<JsDifficultyAttributes> for DifficultyAttributes {
                         n_spinners,
                         stars,
                         max_combo,
+                        ..Default::default()
                     }));
                 }
             }
@@ -443,6 +450,7 @@ impl TryFrom<JsDifficultyAttributes> for DifficultyAttributes {
                         stars,
                         max_combo,
                         is_convert,
+                        ..Default::default()
                     }));
                 }
             }
@@ -452,7 +460,7 @@ impl TryFrom<JsDifficultyAttributes> for DifficultyAttributes {
                 {
                     return Ok(Self::Catch(CatchDifficultyAttributes {
                         stars,
-                        ar,
+                        preempt: ar,
                         n_fruits,
                         n_droplets,
                         n_tiny_droplets,
